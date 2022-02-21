@@ -2,7 +2,14 @@ import React from "react";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
 import PlayerSeat from "./PlayerSeat";
-import { Buttons, Container, PlayerSeats } from "./styles";
+import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
+import {
+  Buttons,
+  Container,
+  PlayerSeats,
+  ButtonsGroup,
+  PrimaryButton,
+} from "./styles";
 
 const initialState = {
   0: {
@@ -47,6 +54,7 @@ export default function PokerTable() {
     if (getSeatArr(activeSeat).length > 10) {
       return;
     }
+    console.log("add chip");
     setSeats((prev) => ({
       ...prev,
       [activeSeat]: {
@@ -59,27 +67,31 @@ export default function PokerTable() {
   return (
     <Container>
       <Buttons width={buttonsWidth}>
-        <button
-          ref={buttonsRef}
-          disabled={activeSeat === null}
-          onClick={handleAddChip}
-        >
-          Add
-        </button>
-        <button
-          disabled={activeSeat === null}
-          onClick={() => {
-            setSeats((prev) => ({
-              ...prev,
-              [activeSeat]: {
-                ...prev[activeSeat],
-                chips: [...prev[activeSeat].chips.slice(0, -1)],
-              },
-            }));
-          }}
-        >
-          Remove
-        </button>
+        <ButtonsGroup>
+          <PrimaryButton
+            ref={buttonsRef}
+            disabled={activeSeat === null}
+            onClick={handleAddChip}
+          >
+            <PlusCircleIcon />
+            add
+          </PrimaryButton>
+          <PrimaryButton
+            disabled={activeSeat === null}
+            onClick={() => {
+              setSeats((prev) => ({
+                ...prev,
+                [activeSeat]: {
+                  ...prev[activeSeat],
+                  chips: [...prev[activeSeat].chips.slice(0, -1)],
+                },
+              }));
+            }}
+          >
+            <MinusCircleIcon />
+            remove
+          </PrimaryButton>
+        </ButtonsGroup>
       </Buttons>
 
       <PlayerSeats>

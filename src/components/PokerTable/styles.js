@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
+  background-image: url("./img/bg.jpg");
+  background-size: cover;
   height: 100vh;
 `;
 
@@ -59,7 +61,7 @@ export const ChipAmount = styled.span`
   display: block;
   font-size: 1.4rem;
   text-align: center;
-  color: ${({ theme }) => theme.colors.primary};
+  color: #3b2b0a;
 `;
 
 export const Buttons = styled.div`
@@ -67,8 +69,54 @@ export const Buttons = styled.div`
   transform: translateX(-50%);
   top: 10%;
   left: 50%;
-  display: flex;
-  gap: 1em;
   width: ${({ width }) => `${width && width}px`};
+`;
+
+export const ButtonsGroup = styled.div`
+  display: flex;
+  gap: 2rem;
   justify-content: center;
+`;
+
+const commonButtonStyles = () => css`
+  border: 0;
+  font-size: 2rem;
+  font-weight: 900;
+  transition: all 150ms ease-in-out;
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  border-radius: 4rem;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+  }
+  &:active {
+    transform: translateY(-1px);
+  }
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  svg {
+    width: 3rem;
+  }
+`;
+
+export const PrimaryButton = styled.button`
+  ${commonButtonStyles};
+  background: rgb(226, 195, 103);
+  background: linear-gradient(
+    180deg,
+    rgba(226, 195, 103, 1) 0%,
+    rgba(180, 136, 50, 1) 100%
+  );
+  color: #3e2d0b;
+  text-shadow: 2px 1px #c5a86a;
+  box-shadow: 2px 4px 4px rgba(37, 12, 4, 0.6);
+  &:hover {
+    box-shadow: 4px 6px 6px rgba(37, 12, 4, 0.8);
+  }
+  &:focus {
+    outline: 6px solid rgba(96, 34, 11, 0.6);
+    box-shadow: 8px 10px 10px rgba(37, 12, 4, 0.8);
+  }
 `;
