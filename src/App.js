@@ -1,9 +1,15 @@
+import styled from "styled-components";
+import PokerTable from "./components/PokerTable";
+
 function App() {
-  return <AppContainer>app</AppContainer>;
+  return (
+    <AppContainer>
+      <PokerTable />
+    </AppContainer>
+  );
 }
 
 export const AppContainer = styled.div`
-  font-size: 1.6rem;
   color: white;
 `;
 

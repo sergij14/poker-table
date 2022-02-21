@@ -14,11 +14,17 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
     background-color: ${({ theme }) => theme.colors.primary}; 
+    font-size: 1.6rem;
   }
 
   a, a:hover, a:focus, a:active {
       text-decoration: none;
       color: inherit;
+  }
+  
+  button, input {
+    font-size: inherit;
+    color: inherit;
   }
 
   img {

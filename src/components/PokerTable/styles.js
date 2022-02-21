@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
+import styled from "styled-components";
+
 export const Container = styled.div`
-  background-color: lightblue;
   height: 100vh;
 `;
 
@@ -57,6 +59,7 @@ export const ChipAmount = styled.span`
   display: block;
   font-size: 1.4rem;
   text-align: center;
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Buttons = styled.div`

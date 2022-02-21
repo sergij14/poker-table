@@ -1,3 +1,9 @@
+import React from "react";
+import { useState } from "react";
+import useMeasure from "react-use-measure";
+import PlayerSeat from "./PlayerSeat";
+import { Buttons, Container, PlayerSeats } from "./styles";
+
 const initialState = {
   0: {
     chips: [],

@@ -1,3 +1,9 @@
+import React from "react";
+import { useMemo } from "react";
+import { useEffect } from "react";
+import useMeasure from "react-use-measure";
+import { Chip, ChipAmount, Chips, SeatArea } from "./styles";
+
 export default function PlayerSeat({
   buttonsBounds,
   getSeatArr,
