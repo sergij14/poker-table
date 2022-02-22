@@ -17,16 +17,19 @@ export const PlayerSeats = styled.div`
 `;
 
 export const SeatArea = styled.div`
-  width: 6rem;
-  height: 6rem;
-  border: 2px ${({ selected }) => `${selected ? "tomato" : "white"}`} solid;
+  width: 12rem;
+  height: 12rem;
+  background-color: rgba(0,0,0, 0.7);
+  border: ${({ selected }) => `${selected ? "8px rgba(102, 153, 153, 0.8)" : "4px rgba(102, 153, 153, 0.5)"}`} solid;
   border-radius: 50%;
-  ${({ selected }) => `${selected ? `opacity: 1` : "opacity: 0.4"}`};
+  transition: all 150ms ease-in-out;
   &:hover {
-    border: 5px white solid;
     cursor: pointer;
-    opacity: 0.8;
+    ${({selected}) => `${!selected && `
+        border: 8px rgba(102, 153, 153, 0.5) solid;
+    `}`}
   }
+
 `;
 
 export const Chips = styled.div`
@@ -38,13 +41,13 @@ export const Chips = styled.div`
 `;
 
 export const Chip = styled(motion.div)`
-  width: 40px;
-  height: 35px;
+  width: 7rem;
+  height: 6.5rem;
   position: absolute;
   overflow: visible;
   img {
-    width: 40px;
-    height: 35px;
+    width: 100%;
+    height: 100%;
     position: absolute;
     inset: 0;
   }
@@ -56,10 +59,12 @@ export const ChipAmount = styled.span`
   position: absolute;
   inset: 0;
   z-index: 20;
-  top: 1.5rem;
+  top: 3.3rem;
   transform: translateY(-50%);
+  user-select: none;
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  font-weight: 900;
   text-align: center;
   color: #3b2b0a;
 `;
@@ -79,6 +84,7 @@ export const ButtonsGroup = styled.div`
 `;
 
 const commonButtonStyles = () => css`
+  user-select: none;
   border: 0;
   font-size: 2rem;
   font-weight: 900;
@@ -92,6 +98,9 @@ const commonButtonStyles = () => css`
   }
   &:active {
     transform: translateY(-1px);
+  }
+  &:disabled {
+    opacity: 0.7;
   }
   display: flex;
   gap: 0.8rem;
@@ -111,12 +120,21 @@ export const PrimaryButton = styled.button`
   );
   color: #3e2d0b;
   text-shadow: 2px 1px #c5a86a;
-  box-shadow: 2px 4px 4px rgba(37, 12, 4, 0.6);
-  &:hover {
-    box-shadow: 4px 6px 6px rgba(37, 12, 4, 0.8);
-  }
   &:focus {
     outline: 6px solid rgba(96, 34, 11, 0.6);
-    box-shadow: 8px 10px 10px rgba(37, 12, 4, 0.8);
   }
 `;
+
+
+export const SeatMessage = styled.h4`
+  text-transform: uppercase;
+  font-size: 5rem;
+  font-weight: 900;
+  position: absolute;
+  transform: translateX(-50%);
+  opacity:0.8;
+  top: 40%;
+  left: 50%;
+  letter-spacing: 2px;
+  user-select: none;
+` 

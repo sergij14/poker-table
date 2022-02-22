@@ -27,8 +27,8 @@ export default function PlayerSeat({
         x: ((seatAreaBounds.width + 40) * 5) / 2 - buttonsBounds.width,
       },
       visible: {
-        y: 55,
-        x: seatNum === 0 ? 10 : (seatAreaBounds.width + 40) * seatNum + 10,
+        y: 95,
+        x: seatNum === 0 ? 25 : (seatAreaBounds.width + 40) * seatNum + 25,
         // y: seatAreaBounds.y + seatAreaBounds.height,
         // x: seatAreaBounds.x + seatAreaBounds.width / 6,
         opacity: 1,
@@ -50,7 +50,7 @@ export default function PlayerSeat({
   return (
     <>
       <SeatArea
-        onClick={() => setActiveSeat(seatNum)}
+        onClick={() => selected ? setActiveSeat(null) : setActiveSeat(seatNum)}
         selected={selected}
         ref={seatAreaRef}
       ></SeatArea>

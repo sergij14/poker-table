@@ -9,7 +9,9 @@ import {
   PlayerSeats,
   ButtonsGroup,
   PrimaryButton,
+  SeatMessage,
 } from "./styles";
+import { toast } from "react-toastify";
 
 const initialState = {
   0: {
@@ -33,13 +35,10 @@ export default function PokerTable() {
   const [buttonsRef, buttonsBounds] = useMeasure();
 
   const [activeSeat, setActiveSeat] = useState(null);
-
+  const [buttonsWidth, setButtonsWidth] = useState();
   const [seats, setSeats] = useState(initialState);
 
-  const [buttonsWidth, setButtonsWidth] = useState();
-
   const getSeatArr = (num) => seats[num].chips;
-
   const _seats = [1, 2, 3, 4, 5];
 
   const playerSeatProps = {
@@ -51,15 +50,25 @@ export default function PokerTable() {
   };
 
   const handleAddChip = () => {
-    if (getSeatArr(activeSeat).length > 10) {
+    if (getSeatArr(activeSeat).length > 30) {
+      toast.warn("Chip limit exceeded");
       return;
     }
-    console.log("add chip");
     setSeats((prev) => ({
       ...prev,
       [activeSeat]: {
         ...prev[activeSeat],
         chips: [...prev[activeSeat].chips, `${Math.random()}`],
+      },
+    }));
+  };
+
+  const handleRemoveChip = () => {
+    setSeats((prev) => ({
+      ...prev,
+      [activeSeat]: {
+        ...prev[activeSeat],
+        chips: [...prev[activeSeat].chips.slice(0, -1)],
       },
     }));
   };
@@ -77,22 +86,16 @@ export default function PokerTable() {
             add
           </PrimaryButton>
           <PrimaryButton
-            disabled={activeSeat === null}
-            onClick={() => {
-              setSeats((prev) => ({
-                ...prev,
-                [activeSeat]: {
-                  ...prev[activeSeat],
-                  chips: [...prev[activeSeat].chips.slice(0, -1)],
-                },
-              }));
-            }}
+            disabled={activeSeat === null || !getSeatArr(activeSeat).length}
+            onClick={handleRemoveChip}
           >
             <MinusCircleIcon />
             remove
           </PrimaryButton>
         </ButtonsGroup>
       </Buttons>
+
+      {activeSeat === null && <SeatMessage>Please take a seat</SeatMessage>}
 
       <PlayerSeats>
         {_seats.map((seat, i) => (
