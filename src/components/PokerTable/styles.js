@@ -38,6 +38,14 @@ export const Chips = styled.div`
   position: absolute;
   left: 0;
   top: 0;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  &:hover{
+    transform: translateY(-3px);
+  }
+  &:active{
+    transform: translateY(-1px);
+  }
 `;
 
 export const Chip = styled(motion.div)`

@@ -7,7 +7,6 @@ import { Chip, ChipAmount, Chips, SeatArea } from "./styles";
 export default function PlayerSeat({
   buttonsBounds,
   getSeatArr,
-  setSeatArr,
   setButtonsWidth,
   setActiveSeat,
   activeSeat,
@@ -50,11 +49,13 @@ export default function PlayerSeat({
   return (
     <>
       <SeatArea
-        onClick={() => selected ? setActiveSeat(null) : setActiveSeat(seatNum)}
+        onClick={() =>
+          selected ? setActiveSeat(null) : setActiveSeat(seatNum)
+        }
         selected={selected}
         ref={seatAreaRef}
       ></SeatArea>
-      <Chips>
+      <Chips onClick={() => setActiveSeat(seatNum)}>
         {chipsArr.map((_, i) => (
           <Chip
             key={i}
