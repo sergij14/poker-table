@@ -2,50 +2,74 @@ import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  background-image: url("./img/bg.jpg");
-  background-size: cover;
-  height: 100vh;
+  position: relative;
+  /* background-color: #000; */
+  max-height: 100vh;
+  max-width: 100vw;
+  height: ${({ playerHeight }) => `${playerHeight}px`};
+  width: ${({ playerWidth }) => `${playerWidth}px`};
+`;
+
+export const Background = styled.img`
+  object-fit: cover;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 95%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 `;
 
 export const PlayerSeats = styled.div`
   position: absolute;
   transform: translateX(-50%);
-  bottom: 10%;
+  top: 45%;
   left: 50%;
   display: flex;
-  gap: 4rem;
+  gap: 12rem;
 `;
 
+export const PlayerSeatContainer = styled.div``;
+
+const paddingForSeat = ({num}) => `${(num === 0 || num === 3) && "transform: translateY(-40px)" }`
+
 export const SeatArea = styled.div`
+  ${paddingForSeat};
   width: 12rem;
   height: 12rem;
-  background-color: rgba(0,0,0, 0.7);
-  border: ${({ selected }) => `${selected ? "8px rgba(102, 153, 153, 0.8)" : "4px rgba(102, 153, 153, 0.5)"}`} solid;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: ${({ selected }) =>
+      `${
+        selected
+          ? "8px rgba(102, 153, 153, 0.8)"
+          : "4px rgba(102, 153, 153, 0.5)"
+      }`}
+    solid;
   border-radius: 50%;
   transition: all 150ms ease-in-out;
   &:hover {
     cursor: pointer;
-    ${({selected}) => `${!selected && `
+    ${({ selected }) =>
+      `${
+        !selected &&
+        `
         border: 8px rgba(102, 153, 153, 0.5) solid;
-    `}`}
+    `
+      }`}
   }
-
 `;
 
 export const Chips = styled.div`
   display: flex;
+  ${paddingForSeat};
   flex-direction: column-reverse;
   position: absolute;
   left: 0;
   top: 0;
   cursor: pointer;
   transition: all 150ms ease-in-out;
-  &:hover{
-    transform: translateY(-3px);
-  }
-  &:active{
-    transform: translateY(-1px);
-  }
 `;
 
 export const Chip = styled(motion.div)`
@@ -133,16 +157,17 @@ export const PrimaryButton = styled.button`
   }
 `;
 
-
 export const SeatMessage = styled.h4`
   text-transform: uppercase;
   font-size: 5rem;
   font-weight: 900;
   position: absolute;
   transform: translateX(-50%);
-  opacity:0.8;
-  top: 40%;
+  opacity: 0.8;
+  top: 30%;
+  background-color: rgba(0,0,0, 0.4);
+  padding: 2rem 3rem;
+  border-radius: 30px;
   left: 50%;
-  letter-spacing: 2px;
   user-select: none;
-` 
+`;

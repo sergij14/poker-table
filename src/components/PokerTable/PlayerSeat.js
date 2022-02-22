@@ -2,7 +2,7 @@ import React from "react";
 import { useMemo } from "react";
 import { useEffect } from "react";
 import useMeasure from "react-use-measure";
-import { Chip, ChipAmount, Chips, SeatArea } from "./styles";
+import { Chip, ChipAmount, Chips, PlayerSeatContainer, SeatArea } from "./styles";
 
 export default function PlayerSeat({
   buttonsBounds,
@@ -27,7 +27,7 @@ export default function PlayerSeat({
       },
       visible: {
         y: 95,
-        x: seatNum === 0 ? 25 : (seatAreaBounds.width + 40) * seatNum + 25,
+        x: seatNum === 0 ? 25 : (seatAreaBounds.width + 120) * seatNum + 25,
         // y: seatAreaBounds.y + seatAreaBounds.height,
         // x: seatAreaBounds.x + seatAreaBounds.width / 6,
         opacity: 1,
@@ -47,15 +47,17 @@ export default function PlayerSeat({
   const selected = useMemo(() => activeSeat === seatNum, [activeSeat, seatNum]);
 
   return (
-    <>
+    <PlayerSeatContainer num={seatNum}>
       <SeatArea
         onClick={() =>
           selected ? setActiveSeat(null) : setActiveSeat(seatNum)
         }
         selected={selected}
+        num={seatNum}
         ref={seatAreaRef}
       ></SeatArea>
-      <Chips onClick={() => setActiveSeat(seatNum)}>
+
+      <Chips num={seatNum} onClick={() => setActiveSeat(seatNum)}>
         {chipsArr.map((_, i) => (
           <Chip
             key={i}
@@ -70,6 +72,6 @@ export default function PlayerSeat({
           </Chip>
         ))}
       </Chips>
-    </>
+    </PlayerSeatContainer>
   );
 }

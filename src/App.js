@@ -13,6 +13,10 @@ function App() {
 
 export const AppContainer = styled.div`
   color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  gap:40px;
 `;
 
 export default App;
