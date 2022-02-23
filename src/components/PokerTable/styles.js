@@ -5,9 +5,11 @@ export const Container = styled.div`
   position: relative;
   background-color: #000;
   overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  height: 90%;
+  width: 100%;
   max-width: 1440px;
+  border-radius: 30px;
+  border: 20px rgba(40,40,40, 0.5) solid;
 `;
 
 export const Background = styled.img`
@@ -28,7 +30,7 @@ export const PlayerSeats = styled.div`
   top: 45%;
   left: 50%;
   display: flex;
-  gap: 12rem;
+  gap: ${({gap}) => `${gap}px`};
 `;
 
 export const PlayerSeatContainer = styled.div``;
@@ -119,11 +121,11 @@ export const ButtonsGroup = styled.div`
 const commonButtonStyles = () => css`
   user-select: none;
   border: 0;
-  font-size: 1.8rem;
   font-weight: 900;
   transition: all 150ms ease-in-out;
   text-transform: uppercase;
-  padding: 1.2rem 2rem;
+  padding: 1.8rem 2.3rem;
+  font-size: 2.2rem;
   border-radius: 4rem;
   &:hover {
     cursor: pointer;
@@ -140,10 +142,6 @@ const commonButtonStyles = () => css`
   align-items: center;
   svg {
     width: 3rem;
-  }
-  @media (min-width: 768px) {
-    padding: 1.8rem 2.3rem;
-    font-size: 2.2rem;
   }
 `;
 

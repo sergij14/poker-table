@@ -15,7 +15,7 @@ export default function PlayerSeat({
   const [seatAreaRef, seatAreaBounds] = useMeasure();
 
   useEffect(() => {
-    setButtonsWidth((seatAreaBounds.width + 40) * 5);
+    setButtonsWidth((seatAreaBounds.width + 80) * 5);
   }, [seatAreaBounds.width]); //eslint-disable-line
 
   const chipVariant = useMemo(
@@ -27,7 +27,7 @@ export default function PlayerSeat({
       },
       visible: {
         y: 95,
-        x: seatNum === 0 ? 25 : (seatAreaBounds.width + 120) * seatNum + 25,
+        x: seatNum === 0 ? 25 : (seatAreaBounds.width + 80) * seatNum + 25,
         // y: seatAreaBounds.y + seatAreaBounds.height,
         // x: seatAreaBounds.x + seatAreaBounds.width / 6,
         opacity: 1,
