@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import useMeasure from "react-use-measure";
 import PlayerSeat from "./PlayerSeat";
@@ -13,7 +13,6 @@ import {
   Background,
 } from "./styles";
 import { toast } from "react-toastify";
-import { useWindowSize } from "rooks";
 
 const initialState = {
   0: {
@@ -33,27 +32,27 @@ const initialState = {
 export default function PokerTable() {
   const [buttonsRef, buttonsBounds] = useMeasure();
 
-  const { innerWidth, innerHeight } = useWindowSize();
+  // const { innerWidth, innerHeight } = useWindowSize();
   const [activeSeat, setActiveSeat] = useState(null);
   const [buttonsWidth, setButtonsWidth] = useState();
   const [seats, setSeats] = useState(initialState);
-  const [playerWidth, setPlayerWidth] = useState(0);
-  const [playerHeight, setPlayerHeight] = useState(0);
+  // const [playerWidth, setPlayerWidth] = useState(0);
+  // const [playerHeight, setPlayerHeight] = useState(0);
 
   const getSeatArr = (num) => seats[num].chips;
   const _seats = [1, 2, 3, 4];
 
-  useLayoutEffect(() => {
-    if (innerWidth && innerHeight) {
-      if (innerHeight > innerWidth) {
-        setPlayerHeight((9 / 16) * innerWidth);
-        setPlayerWidth(innerWidth);
-      } else {
-        setPlayerHeight(innerHeight);
-        setPlayerWidth((16 / 9) * innerHeight);
-      }
-    }
-  }, [innerWidth, innerHeight, setPlayerHeight, setPlayerWidth]);
+  // useLayoutEffect(() => {
+  //   if (innerWidth && innerHeight) {
+  //     if (innerHeight > innerWidth) {
+  //       setPlayerHeight((9 / 16) * innerWidth);
+  //       setPlayerWidth(innerWidth);
+  //     } else {
+  //       setPlayerHeight(innerHeight);
+  //       setPlayerWidth((16 / 9) * innerHeight);
+  //     }
+  //   }
+  // }, [innerWidth, innerHeight, setPlayerHeight, setPlayerWidth]);
 
   const playerSeatProps = {
     buttonsBounds,
@@ -62,10 +61,6 @@ export default function PokerTable() {
     setActiveSeat,
     setButtonsWidth,
   };
-
-  const containerProps = {
-    playerHeight, playerWidth
-  }
 
   const handleAddChip = () => {
     if (getSeatArr(activeSeat).length > 30) {
@@ -92,7 +87,7 @@ export default function PokerTable() {
   };
 
   return (
-    <Container {...containerProps}>
+    <Container>
       <Background src="img/bg_3.jpg" />
       <Buttons width={buttonsWidth}>
         <ButtonsGroup>

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
-import { device } from "../../styles/devices";
 
 export const Container = styled.div`
   position: relative;
@@ -8,12 +7,7 @@ export const Container = styled.div`
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  @media ${device.tablet} {
-    height: ${({ playerHeight }) => `${playerHeight}px`};
-    width: ${({ playerWidth }) => `${playerWidth}px`};
-    max-height: 100vh;
-    max-width: 100vw;
-  }
+  max-width: 1440px;
 `;
 
 export const Background = styled.img`
@@ -111,7 +105,7 @@ export const ChipAmount = styled.span`
 export const Buttons = styled.div`
   position: absolute;
   transform: translateX(-50%);
-  top: 10%;
+  top: 5%;
   left: 50%;
   width: ${({ width }) => `${width && width}px`};
 `;
@@ -125,11 +119,11 @@ export const ButtonsGroup = styled.div`
 const commonButtonStyles = () => css`
   user-select: none;
   border: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 900;
   transition: all 150ms ease-in-out;
   text-transform: uppercase;
-  padding: 1.5rem 3rem;
+  padding: 1.2rem 2rem;
   border-radius: 4rem;
   &:hover {
     cursor: pointer;
@@ -146,6 +140,10 @@ const commonButtonStyles = () => css`
   align-items: center;
   svg {
     width: 3rem;
+  }
+  @media (min-width: 768px) {
+    padding: 1.8rem 2.3rem;
+    font-size: 2.2rem;
   }
 `;
 
@@ -166,7 +164,7 @@ export const PrimaryButton = styled.button`
 
 export const SeatMessage = styled.h4`
   text-transform: uppercase;
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 900;
   position: absolute;
   transform: translateX(-50%);
