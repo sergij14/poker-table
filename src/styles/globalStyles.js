@@ -15,8 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    background-color: #000;
   }
 
   a, a:hover, a:focus, a:active {

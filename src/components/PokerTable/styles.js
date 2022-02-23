@@ -3,9 +3,11 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-  /* background-color: #000; */
+  background-color: #000;
   max-height: 100vh;
   max-width: 100vw;
+  overflow: hidden;
+
   height: ${({ playerHeight }) => `${playerHeight}px`};
   width: ${({ playerWidth }) => `${playerWidth}px`};
 `;
@@ -15,7 +17,7 @@ export const Background = styled.img`
   pointer-events: none;
   position: absolute;
   width: 100%;
-  height: 95%;
+  height: 100%;
   top: 0px;
   right: 0px;
   bottom: 0px;
@@ -33,7 +35,8 @@ export const PlayerSeats = styled.div`
 
 export const PlayerSeatContainer = styled.div``;
 
-const paddingForSeat = ({num}) => `${(num === 0 || num === 3) && "transform: translateY(-40px)" }`
+const paddingForSeat = ({ num }) =>
+  `${(num === 0 || num === 3) && "transform: translateY(-40px)"}`;
 
 export const SeatArea = styled.div`
   ${paddingForSeat};
@@ -165,7 +168,7 @@ export const SeatMessage = styled.h4`
   transform: translateX(-50%);
   opacity: 0.8;
   top: 30%;
-  background-color: rgba(0,0,0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 2rem 3rem;
   border-radius: 30px;
   left: 50%;

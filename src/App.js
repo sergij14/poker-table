@@ -14,9 +14,8 @@ function App() {
 export const AppContainer = styled.div`
   color: white;
   display: flex;
-  flex-direction: column;
-  background-color: red;
-  gap:40px;
+  justify-content: center;
+  background-color: #000;
 `;
 
 export default App;
