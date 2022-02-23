@@ -79,7 +79,7 @@ export default function PokerTable() {
 
   return (
     <Container width={TABLE_WIDTH}>
-      <Background src="img/bg_3.jpg" />
+      <Background src="img/bg.jpg" />
       <Buttons width={buttonsWidth}>
         <ButtonsGroup>
           <PrimaryButton
