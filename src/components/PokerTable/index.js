@@ -12,7 +12,7 @@ import {
   Background,
 } from "./styles";
 import { toast } from "react-toastify";
-import { GAP_BETWEEN_SEATS } from "./constants";
+import {GAP_BETWEEN_SEATS, TABLE_WIDTH} from './constants';
 
 const initialState = {
   0: {
@@ -78,7 +78,7 @@ export default function PokerTable() {
   }, [isSeatSelected])
 
   return (
-    <Container>
+    <Container width={TABLE_WIDTH}>
       <Background src="img/bg_3.jpg" />
       <Buttons width={buttonsWidth}>
         <ButtonsGroup>

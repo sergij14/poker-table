@@ -4,10 +4,8 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   position: relative;
   background-color: #000;
-  overflow: hidden;
   height: 90%;
-  width: 100%;
-  max-width: 1440px;
+  width: ${({width}) => `${width}px`};;
   border-radius: 30px;
   border: 20px rgba(40,40,40, 0.5) solid;
 `;
@@ -27,7 +25,7 @@ export const Background = styled.img`
 export const PlayerSeats = styled.div`
   position: absolute;
   transform: translateX(-50%);
-  top: 45%;
+  top: 52%;
   left: 50%;
   display: flex;
   gap: ${({gap}) => `${gap}px`};
@@ -107,6 +105,7 @@ export const ChipAmount = styled.span`
 export const Buttons = styled.div`
   position: absolute;
   transform: translateX(-50%);
+  z-index:30; 
   top: 5%;
   left: 50%;
   width: ${({ width }) => `${width && width}px`};
