@@ -1,15 +1,19 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
+import { device } from "../../styles/devices";
 
 export const Container = styled.div`
   position: relative;
   background-color: #000;
-  max-height: 100vh;
-  max-width: 100vw;
   overflow: hidden;
-
-  height: ${({ playerHeight }) => `${playerHeight}px`};
-  width: ${({ playerWidth }) => `${playerWidth}px`};
+  height: 100vh;
+  width: 100vw;
+  @media ${device.tablet} {
+    height: ${({ playerHeight }) => `${playerHeight}px`};
+    width: ${({ playerWidth }) => `${playerWidth}px`};
+    max-height: 100vh;
+    max-width: 100vw;
+  }
 `;
 
 export const Background = styled.img`
