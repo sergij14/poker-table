@@ -1,3 +1,3 @@
 # Poker Table
 
-Poker Table created with Framer Motion, styled-components & React.
+Poker Table animations created with React, Framer-Motion & styled-components.
