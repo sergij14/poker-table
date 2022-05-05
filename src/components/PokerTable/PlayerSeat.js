@@ -12,6 +12,7 @@ export default function PlayerSeat({
   setActiveSeat,
   activeSeat,
   seatNum,
+  scale
 }) {
   const [seatAreaRef, seatAreaBounds] = useMeasure();
 
@@ -28,7 +29,7 @@ export default function PlayerSeat({
       },
       visible: {
         y: 95,
-        x: seatNum === 0 ? 25 : (seatAreaBounds.width + GAP_BETWEEN_SEATS) * seatNum + 25,
+        x: seatNum === 0 ? 25 : (seatAreaBounds.width + GAP_BETWEEN_SEATS) * seatNum + ((parseFloat(scale)) * 25),
         // y: seatAreaBounds.y + seatAreaBounds.height,
         // x: seatAreaBounds.x + seatAreaBounds.width / 6,
         opacity: 1,
@@ -40,8 +41,11 @@ export default function PlayerSeat({
       seatNum,
       seatAreaBounds.top,
       buttonsBounds.width,
+      scale
     ]
   );
+
+  console.log(Math.abs(parseFloat(scale)));
 
   const chipsArr = getSeatArr(seatNum);
 

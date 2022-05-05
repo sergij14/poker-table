@@ -29,7 +29,7 @@ const initialState = {
   },
 };
 
-export default function PokerTable() {
+export default function PokerTable({scale}) {
   const [buttonsRef, buttonsBounds] = useMeasure();
 
   const [activeSeat, setActiveSeat] = useState(null);
@@ -45,6 +45,7 @@ export default function PokerTable() {
     activeSeat,
     setActiveSeat,
     setButtonsWidth,
+    scale
   };
 
   const handleAddChip = () => {

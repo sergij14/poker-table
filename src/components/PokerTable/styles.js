@@ -7,7 +7,6 @@ export const Container = styled.div`
   height: 90%;
   width: ${({width}) => `${width}px`};;
   border-radius: 30px;
-  border: 20px rgba(40,40,40, 0.5) solid;
 `;
 
 export const Background = styled.img`
