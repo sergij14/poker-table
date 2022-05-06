@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
+import { toast } from "react-toastify";
 
 const useScale = () => {
   const [scale, setScale] = useState("");
@@ -28,6 +29,7 @@ const useScale = () => {
     personalPromoScale = m_scale;
     if (personalPromoScale > 1) personalPromoScale = 1;
     setScale(`${personalPromoScale} , ${personalPromoScale}`);
+    toast.success('load')
   }, []);
 
   useEffect(() => {

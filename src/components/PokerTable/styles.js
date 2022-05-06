@@ -26,7 +26,7 @@ export const PlayerSeats = styled.div`
   top: 55%;
   left: 50%;
   display: flex;
-  gap: 18rem;
+  gap: 8.5rem;
 `;
 
 export const PlayerSeatContainer = styled.div``;
@@ -36,8 +36,8 @@ const paddingForSeat = ({ num }) =>
 
 export const SeatArea = styled.div`
   ${paddingForSeat};
-  width: 12rem;
-  height: 12rem;
+  width: 9.5rem;
+  height: 9.5rem;
   background-color: rgba(0, 0, 0, 0.7);
   border: ${({ selected }) =>
       `${
