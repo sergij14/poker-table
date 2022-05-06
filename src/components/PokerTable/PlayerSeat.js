@@ -1,8 +1,6 @@
 import React from "react";
 import { useMemo } from "react";
-import { useEffect } from "react";
 import useMeasure from "react-use-measure";
-import { GAP_BETWEEN_SEATS } from "./constants";
 import {
   Chip,
   ChipAmount,
@@ -12,39 +10,29 @@ import {
 } from "./styles";
 
 export default function PlayerSeat({
-  buttonsBounds,
   getSeatArr,
-  setButtonsWidth,
   setActiveSeat,
   activeSeat,
   seatNum,
 }) {
   const [seatAreaRef, seatAreaBounds] = useMeasure();
 
-  useEffect(() => {
-    setButtonsWidth((seatAreaBounds.width + GAP_BETWEEN_SEATS) * 5);
-  }, [seatAreaBounds.width]); //eslint-disable-line
-
   const chipVariant = useMemo(
     () => ({
       hidden: {
         opacity: 0,
-        y: 0 - (seatAreaBounds.top - buttonsBounds.top * 2),
-        x: 0,
+        y: 50,
+        x: seatAreaBounds.width /5,
       },
       visible: {
         y: seatNum === 0 || seatNum === 3 ? 135 : 95,
         x: seatAreaBounds.width /5,
-        // y: seatAreaBounds.y + seatAreaBounds.height,
-        // x: seatAreaBounds.x + seatAreaBounds.width / 6,
         opacity: 1,
       },
     }),
     [
-      buttonsBounds.top,
       seatAreaBounds.width,
       seatNum,
-      seatAreaBounds.top,
     ]
   );
 

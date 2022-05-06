@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { useState } from "react";
-import useMeasure from "react-use-measure";
 import PlayerSeat from "./PlayerSeat";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
 import {
@@ -12,7 +11,6 @@ import {
   Background,
 } from "./styles";
 import { toast } from "react-toastify";
-import {GAP_BETWEEN_SEATS, TABLE_WIDTH} from './constants';
 
 const initialState = {
   0: {
@@ -30,21 +28,17 @@ const initialState = {
 };
 
 export default function PokerTable() {
-  const [buttonsRef, buttonsBounds] = useMeasure();
 
   const [activeSeat, setActiveSeat] = useState(null);
-  const [buttonsWidth, setButtonsWidth] = useState();
   const [seats, setSeats] = useState(initialState);
 
   const getSeatArr = (num) => seats[num].chips;
   const _seats = [1, 2, 3, 4];
 
   const playerSeatProps = {
-    buttonsBounds,
     getSeatArr,
     activeSeat,
     setActiveSeat,
-    setButtonsWidth,
   };
 
   const handleAddChip = () => {
@@ -78,12 +72,11 @@ export default function PokerTable() {
   }, [isSeatSelected])
 
   return (
-    <Container width={TABLE_WIDTH}>
+    <Container>
       <Background src="img/bg.jpg" />
-      <Buttons width={buttonsWidth}>
+      <Buttons>
         <ButtonsGroup>
           <PrimaryButton
-            ref={buttonsRef}
             disabled={activeSeat === null}
             onClick={handleAddChip}
           >
@@ -100,7 +93,7 @@ export default function PokerTable() {
         </ButtonsGroup>
       </Buttons>
 
-      <PlayerSeats gap={GAP_BETWEEN_SEATS}>
+      <PlayerSeats>
         {_seats.map((seat, i) => (
           <PlayerSeat seatNum={i} {...playerSeatProps} key={seat} />
         ))}

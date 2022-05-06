@@ -4,9 +4,8 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   position: relative;
   background-color: #000;
-  height: 90%;
-  width: ${({width}) => `${width}px`};;
-  border-radius: 30px;
+  height: 100%;
+  width: 142rem;
 `;
 
 export const Background = styled.img`
@@ -27,7 +26,7 @@ export const PlayerSeats = styled.div`
   top: 52%;
   left: 50%;
   display: flex;
-  gap: ${({gap}) => `${gap}px`};
+  gap: 6rem;
 `;
 
 export const PlayerSeatContainer = styled.div``;
@@ -105,7 +104,6 @@ export const Buttons = styled.div`
   z-index:30; 
   top: 5%;
   left: 50%;
-  width: ${({ width }) => `${width && width}px`};
 `;
 
 export const ButtonsGroup = styled.div`
