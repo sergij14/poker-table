@@ -1,12 +1,14 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
+import { useWindowSize } from "rooks";
 import styled from "styled-components";
 import PokerTable from "./components/PokerTable";
 import TableContextProvider from "./contexts/TableContext";
 import useScale from "./hooks/useScale";
 
 function App() {
-  const { scale } = useScale();
+  const { innerWidth, innerHeight } = useWindowSize();
+  const { scale } = useScale( innerWidth, innerHeight );
 
   return (
     <>
