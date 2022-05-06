@@ -1,6 +1,7 @@
 import React from "react";
 import { useMemo } from "react";
 import useMeasure from "react-use-measure";
+import { useTable } from "../../contexts/TableContext";
 import {
   Chip,
   ChipAmount,
@@ -9,37 +10,27 @@ import {
   SeatArea,
 } from "./styles";
 
-export default function PlayerSeat({
-  getSeatArr,
-  setActiveSeat,
-  activeSeat,
-  seatNum,
-}) {
+export default function PlayerSeat({ seatNum }) {
   const [seatAreaRef, seatAreaBounds] = useMeasure();
+  const { getSeatArr, activeSeat, setActiveSeat } = useTable();
 
   const chipVariant = useMemo(
     () => ({
       hidden: {
         opacity: 0,
         y: 50,
-        x: seatAreaBounds.width /5,
+        x: seatAreaBounds.width / 5,
       },
       visible: {
         y: seatNum === 0 || seatNum === 3 ? 135 : 95,
-        x: seatAreaBounds.width /5,
+        x: seatAreaBounds.width / 5,
         opacity: 1,
       },
     }),
-    [
-      seatAreaBounds.width,
-      seatNum,
-    ]
+    [seatAreaBounds.width, seatNum]
   );
 
-  console.log(seatAreaBounds, seatNum);
-
-  const chipsArr = getSeatArr(seatNum);
-
+  const chipsArr = useMemo(() => getSeatArr(seatNum), [ getSeatArr, seatNum ]);
   const selected = useMemo(() => activeSeat === seatNum, [activeSeat, seatNum]);
 
   return (
