@@ -22,7 +22,7 @@ export default function PlayerSeat({ seatNum }) {
         x: seatAreaBounds.width / 5,
       },
       visible: {
-        y: seatNum === 0 || seatNum === 3 ? 135 : 95,
+        y: seatNum === 0 || seatNum === 3 ? 125 : 85,
         x: seatAreaBounds.width / 5,
         opacity: 1,
       },

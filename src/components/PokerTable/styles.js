@@ -70,7 +70,7 @@ export const Chips = styled.div`
 `;
 
 export const Chip = styled(motion.div)`
-  width: 7rem;
+  width: 6rem;
   height: 6.5rem;
   position: absolute;
   overflow: visible;
