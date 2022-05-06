@@ -23,10 +23,10 @@ export const Background = styled.img`
 export const PlayerSeats = styled.div`
   position: absolute;
   transform: translateX(-50%);
-  top: 52%;
+  top: 55%;
   left: 50%;
   display: flex;
-  gap: 6rem;
+  gap: 18rem;
 `;
 
 export const PlayerSeatContainer = styled.div``;
