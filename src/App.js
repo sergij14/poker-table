@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
-import {isMobile} from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 import PokerTable from "./components/PokerTable";
 
 function App() {
   const appRef = useRef();
 
-  const [scale, setScale] = useState('')
+  const [scale, setScale] = useState("");
 
   const handleResize = useCallback(() => {
     let personalPromoScale = 1;
@@ -16,12 +16,13 @@ function App() {
     let o_width = 1280;
     let o_height = 760;
     if (isMobile) {
-        o_width = 1280;
-        o_height = 760;
-        if (height > width) {
-            o_width = 400;
-            o_height = 840;
-        } else {}
+      o_width = 1280;
+      o_height = 760;
+      if (height > width) {
+        o_width = 400;
+        o_height = 840;
+      } else {
+      }
     }
     let w_scale = 0;
     let h_scale = 0;
@@ -38,23 +39,25 @@ function App() {
     window.addEventListener("resize", handleResize, true);
     window.addEventListener("load", handleResize, true);
     return () => {
-      window.removeEventListener('resize', handleResize)
-      window.removeEventListener('load', handleResize)
-    }
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", handleResize);
+    };
   }, [handleResize]);
 
   return (
-    <AppContainer ref={appRef} scale={scale}>
-      <PokerTable scale={scale} />
+    <>
+      <AppContainer ref={appRef} scale={scale}>
+        <PokerTable />
+      </AppContainer>
       <ToastContainer />
-    </AppContainer>
+    </>
   );
 }
 
 export const AppContainer = styled.div`
   color: white;
   display: flex;
-  transform: ${({scale}) => `scale(${scale})`};
+  transform: ${({ scale }) => `scale(${scale})`};
   flex-direction: column;
   align-items: center;
   height: 100vh;
