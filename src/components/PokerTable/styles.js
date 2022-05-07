@@ -31,23 +31,8 @@ export const PlayerSeats = styled.div`
 
 export const PlayerSeatContainer = styled.div``;
 
-const paddingForSeat = ({ num }) => {
-  if (num === 0) {
-    return `${"transform: translateY(-40px) rotateX(35deg) rotateY(3deg) rotateZ(1.5deg)"}`;
-  }
-  if (num === 1) {
-    return `${"transform: rotateX(35deg) rotateY(3deg) rotateZ(0.5deg)"}`;
-  }
-  if (num === 2) {
-    return `${"transform: rotateX(35deg) rotateY(3deg) rotateZ(-0.5deg)"}`;
-  }
-  if (num === 3) {
-    return `${"transform: translateY(-40px) rotateX(35deg) rotateY(3deg) rotateZ(-1.5deg)"}`;
-  }
-  if(num === 1){
-
-  }
-};
+const paddingForSeat = ({ num }) =>
+  `${(num === 0 || num === 3) && "transform: translateY(-40px)"}`;
 
 export const SeatArea = styled.div`
   ${paddingForSeat};
@@ -58,7 +43,7 @@ export const SeatArea = styled.div`
       `${
         selected
           ? "8px rgba(102, 153, 153, 0.8)"
-          : "4px rgba(102, 153, 153, 0.5)"
+          : "2px rgba(102, 153, 153, 0.5)"
       }`}
     solid;
   border-radius: 50%;
@@ -69,7 +54,7 @@ export const SeatArea = styled.div`
       `${
         !selected &&
         `
-        outline: 8px rgba(102, 153, 153, 0.5) solid;
+        outline: 4px rgba(102, 153, 153, 0.8) solid;
     `
       }`}
   }
