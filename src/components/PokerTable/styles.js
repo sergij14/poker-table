@@ -26,20 +26,35 @@ export const PlayerSeats = styled.div`
   top: 55%;
   left: 50%;
   display: flex;
-  gap: 8.5rem;
+  gap: 10.5rem;
 `;
 
 export const PlayerSeatContainer = styled.div``;
 
-const paddingForSeat = ({ num }) =>
-  `${(num === 0 || num === 3) && "transform: translateY(-40px)"}`;
+const paddingForSeat = ({ num }) => {
+  if (num === 0) {
+    return `${"transform: translateY(-40px) rotateX(35deg) rotateY(3deg) rotateZ(1.5deg)"}`;
+  }
+  if (num === 1) {
+    return `${"transform: rotateX(35deg) rotateY(3deg) rotateZ(0.5deg)"}`;
+  }
+  if (num === 2) {
+    return `${"transform: rotateX(35deg) rotateY(3deg) rotateZ(-0.5deg)"}`;
+  }
+  if (num === 3) {
+    return `${"transform: translateY(-40px) rotateX(35deg) rotateY(3deg) rotateZ(-1.5deg)"}`;
+  }
+  if(num === 1){
+
+  }
+};
 
 export const SeatArea = styled.div`
   ${paddingForSeat};
   width: 9.5rem;
   height: 9.5rem;
   background-color: rgba(0, 0, 0, 0.7);
-  border: ${({ selected }) =>
+  outline: ${({ selected }) =>
       `${
         selected
           ? "8px rgba(102, 153, 153, 0.8)"
@@ -54,7 +69,7 @@ export const SeatArea = styled.div`
       `${
         !selected &&
         `
-        border: 8px rgba(102, 153, 153, 0.5) solid;
+        outline: 8px rgba(102, 153, 153, 0.5) solid;
     `
       }`}
   }
@@ -101,7 +116,7 @@ export const ChipAmount = styled.span`
 export const Buttons = styled.div`
   position: absolute;
   transform: translateX(-50%);
-  z-index:30; 
+  z-index: 30;
   top: 5%;
   left: 50%;
 `;
