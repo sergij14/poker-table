@@ -42,11 +42,10 @@ function TableContextProvider({ children }) {
 
   const handleAddChip = () => {
     if(activeSeat === null) {
-      toast.warn("Please select a seat");
+      return toast.warn("Please select a seat");
     }
     if (getSeatArr(activeSeat).length > 30) {
-      toast.warn("Chip limit exceeded");
-      return;
+      return toast.warn("Chip limit exceeded");
     }
     setSeats((prev) => ({
       ...prev,
