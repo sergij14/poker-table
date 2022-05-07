@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PlayerSeat from "./PlayerSeat";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
 import {
@@ -9,12 +9,10 @@ import {
   PrimaryButton,
   Background,
 } from "./styles";
-import { toast } from "react-toastify";
 import { useTable } from "../../contexts/TableContext";
 
 export default function PokerTable() {
   const {
-    isSeatSelected,
     handleAddChip,
     handleRemoveChip,
     activeSeat,
@@ -22,17 +20,12 @@ export default function PokerTable() {
     _seats,
   } = useTable();
 
-  
-  useEffect(() => {
-    isSeatSelected && toast.warn("Please select a seat");
-  }, [isSeatSelected]);
-
   return (
     <Container>
       <Background src="img/bg.jpg" />
       <Buttons>
         <ButtonsGroup>
-          <PrimaryButton disabled={activeSeat === null} onClick={handleAddChip}>
+          <PrimaryButton onClick={handleAddChip}>
             <PlusCircleIcon />
             add
           </PrimaryButton>

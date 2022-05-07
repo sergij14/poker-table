@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 const initialSeats = {
@@ -39,9 +39,11 @@ function TableContextProvider({ children }) {
 
   const getSeatArr = (num) => seats[num].chips;
   const _seats = [1, 2, 3, 4];
-  const isSeatSelected = useMemo(() => activeSeat === null, [activeSeat]);
 
   const handleAddChip = () => {
+    if(activeSeat === null) {
+      toast.warn("Please select a seat");
+    }
     if (getSeatArr(activeSeat).length > 30) {
       toast.warn("Chip limit exceeded");
       return;
@@ -69,7 +71,6 @@ function TableContextProvider({ children }) {
     getSeatArr,
     activeSeat,
     setActiveSeat,
-    isSeatSelected,
     handleRemoveChip,
     handleAddChip,
     seats,
