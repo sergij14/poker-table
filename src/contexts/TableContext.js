@@ -41,7 +41,7 @@ function TableContextProvider({ children }) {
   const _seats = [1, 2, 3, 4];
 
   const handleAddChip = () => {
-    if(activeSeat === null) {
+    if (activeSeat === null) {
       return toast.warn("Please select a seat");
     }
     if (getSeatArr(activeSeat).length > 30) {
@@ -57,13 +57,18 @@ function TableContextProvider({ children }) {
   };
 
   const handleRemoveChip = () => {
-    setSeats((prev) => ({
-      ...prev,
-      [activeSeat]: {
-        ...prev[activeSeat],
-        chips: [...prev[activeSeat].chips.slice(0, -1)],
-      },
-    }));
+    setSeats((prev) => {
+      if(getSeatArr(activeSeat).length === 1){
+        setActiveSeat(null);
+      }
+      return {
+        ...prev,
+        [activeSeat]: {
+          ...prev[activeSeat],
+          chips: [...prev[activeSeat].chips.slice(0, -1)],
+        },
+      };
+    });
   };
 
   const contextProps = {
