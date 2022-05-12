@@ -103,7 +103,7 @@ export const Buttons = styled.div`
   position: absolute;
   transform: translateX(-50%);
   z-index: 30;
-  top: 5%;
+  top: 5rem;
   left: 50%;
 `;
 
@@ -115,17 +115,11 @@ export const ButtonsGroup = styled.div`
 `;
 
 export const ErrorContainer = styled(motion.div)`
-  position: absolute;
-  left: 50%;
-  bottom: -8rem;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 1.5rem 2rem;
   color: rgba(255, 153, 153, 0.7);
   border-radius: 4rem;
   font-size: 1.8rem;
-  max-width: 100%;
-  min-width: fit-content;
   &:after {
     content: "";
     width: 0;
@@ -134,7 +128,7 @@ export const ErrorContainer = styled(motion.div)`
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    border-bottom: 12px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 12px solid rgba(0, 0, 0, 0.8);
     border-right: 12px solid transparent; /* 40px height (20+20) */
     border-left: 12px solid transparent;
     position: absolute;
@@ -192,4 +186,83 @@ export const SeatMessage = styled.h4`
   border-radius: 30px;
   left: 50%;
   user-select: none;
+`;
+
+export const GameInfoInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const GameInfo = styled.div`
+  position: absolute;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 30;
+  bottom: 8rem;
+  left: 50%;
+`;
+
+export const VolumeLevelContainer = styled.div`
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1.5rem 2rem;
+  color: rgba(255, 153, 153, 0.7);
+  border-radius: 4rem;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+`;
+
+export const Volume = styled.div`
+  display: flex;
+  align-items: center;
+  color:#fff;
+  font-size: 2.2rem;
+  gap: 1rem;
+  & > svg {
+    & path {
+      color:inherit;
+    }
+    width: 3rem;
+  }
+`;
+export const VolumeBtn = styled.button`
+  cursor: pointer;
+  border: 0;
+  font-weight: 900;
+  transition: all 150ms ease-in-out;
+  text-transform: uppercase;
+  padding: 1rem 1.3rem;
+  font-size: 1.8rem;
+  border-radius: 4rem;
+  &:hover {
+    transform: translateY(-3px);
+  }
+  &:active {
+    transform: translateY(-1px);
+  }
+  &:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  svg {
+    width: 3rem;
+  }
+  background: rgb(236, 236, 236);
+  background: linear-gradient(
+    180deg,
+    rgba(236, 236, 236, 1) 0%,
+    rgba(215, 210, 211, 1) 100%
+  );
+  color: rgb(108, 122, 137);
+  text-shadow: 2px 1px #fff;
+  &:focus {
+    border: none;
+  }
 `;

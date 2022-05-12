@@ -8,9 +8,12 @@ import {
   ButtonsGroup,
   PrimaryButton,
   Background,
+  GameInfo,
+  GameInfoInner,
 } from "./styles";
 import { useTable } from "../../context/TableContext";
 import ErrorMessage from "./ErrorMessage";
+import VolumeLevel from "./VolumeLevel";
 
 export default function PokerTable() {
   const {
@@ -38,7 +41,6 @@ export default function PokerTable() {
             <MinusCircleIcon />
             remove
           </PrimaryButton>
-          {error && <ErrorMessage />}
         </ButtonsGroup>
       </Buttons>
 
@@ -47,6 +49,13 @@ export default function PokerTable() {
           <PlayerSeat seatNum={i} key={seat} />
         ))}
       </PlayerSeats>
+
+      <GameInfo>
+        <GameInfoInner>
+          {error && <ErrorMessage />}
+          <VolumeLevel />
+        </GameInfoInner>
+      </GameInfo>
     </Container>
   );
 }

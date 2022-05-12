@@ -25,4 +25,7 @@ export const defaultContext = {
   setError: undefined,
   seats: undefined,
   _seats: undefined,
+  volume: undefined,
+  volumeDown: undefined,
+  volumeUp: undefined
 };

@@ -26,11 +26,23 @@ function TableContextProvider({ children }) {
   // App error
   const [error, setError] = useState();
 
-  //Sounds
-  const [playAddChip] = useSound(addChip);
-  const [playRemoveChip] = useSound(removeChip);
-  const [playWarning] = useSound(warning);
-  const [playSelectSeat] = useSound(click);
+  // Volume level
+  const [volume, setVolume] = useState(1);
+
+  const volumeDown = () => {
+    playClick();
+    setVolume((prev) => prev - 0.1);
+  };
+  const volumeUp = () => {
+    playClick();
+    setVolume((prev) => prev + 0.1);
+  };
+
+  // Sounds
+  const [playAddChip] = useSound(addChip, { volume });
+  const [playRemoveChip] = useSound(removeChip, { volume });
+  const [playWarning] = useSound(warning, { volume });
+  const [playClick] = useSound(click, { volume });
 
   // Getting seats
   const getSeatArr = useCallback((num) => seats[num].chips, [seats]);
@@ -41,7 +53,7 @@ function TableContextProvider({ children }) {
     if (seatNum === activeSeat) {
       setActiveSeat(null);
     } else {
-      playSelectSeat()
+      playClick();
       setActiveSeat(seatNum);
     }
   };
@@ -92,8 +104,7 @@ function TableContextProvider({ children }) {
         },
       };
     });
-    playRemoveChip()
-
+    playRemoveChip();
   };
 
   // Context obj
@@ -108,6 +119,9 @@ function TableContextProvider({ children }) {
     setError,
     seats,
     _seats,
+    volume,
+    volumeDown,
+    volumeUp,
   };
 
   return (
