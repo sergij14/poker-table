@@ -28,6 +28,9 @@ function TableContextProvider({ children }) {
   const getSeatArr = (num) => seats[num].chips;
   const _seats = [1, 2, 3, 4];
 
+  // Click allowed
+  const [clickAllowed, setClickAllowed] = useState(true);
+
   // Selecting a seat
   const handleSeatSelect = (seatNum) => {
     if (seatNum === activeSeat) {
@@ -57,7 +60,8 @@ function TableContextProvider({ children }) {
         },
       };
     });
-    addChipSound.play();
+    setClickAllowed(false);
+    addChipSound.play(() => setClickAllowed(true));
   };
 
   const handleRemoveChip = () => {
@@ -73,7 +77,8 @@ function TableContextProvider({ children }) {
         },
       };
     });
-    removeChipSound.play();
+    setClickAllowed(false);
+    removeChipSound.play(() => setClickAllowed(true));
   };
 
   // Context obj
@@ -84,6 +89,7 @@ function TableContextProvider({ children }) {
     handleRemoveChip,
     handleAddChip,
     handleSeatSelect,
+    clickAllowed,
     seats,
     _seats,
   };

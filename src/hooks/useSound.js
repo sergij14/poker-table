@@ -9,11 +9,14 @@ const useSound = (audioFile) => {
     }
   }, [soundRef, audioFile]);
 
-  const play = useCallback(() => {
-    if (soundRef?.current) {
-      soundRef.current.play();
-    }
-  }, [soundRef]);
+  const play = useCallback(
+    (cb = null) => {
+      if (soundRef?.current) {
+        soundRef.current.play().then(() => cb && cb());
+      }
+    },
+    [soundRef]
+  );
 
   return {
     soundRef,

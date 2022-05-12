@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PlayerSeat from "./PlayerSeat";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
 import {
@@ -18,18 +18,24 @@ export default function PokerTable() {
     activeSeat,
     getSeatArr,
     _seats,
+    clickAllowed,
   } = useTable();
+
+  useEffect(() => {
+    console.log(clickAllowed);
+  }, [clickAllowed]);
 
   return (
     <Container>
       <Background src="img/bg.jpg" />
       <Buttons>
         <ButtonsGroup>
-          <PrimaryButton onClick={handleAddChip}>
+          <PrimaryButton clickAllowed={clickAllowed} onClick={handleAddChip}>
             <PlusCircleIcon />
             add
           </PrimaryButton>
           <PrimaryButton
+            clickAllowed={clickAllowed}
             disabled={activeSeat === null || !getSeatArr(activeSeat).length}
             onClick={handleRemoveChip}
           >

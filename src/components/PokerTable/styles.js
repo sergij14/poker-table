@@ -112,8 +112,8 @@ export const ButtonsGroup = styled.div`
   justify-content: center;
 `;
 
-const commonButtonStyles = () => css`
-  user-select: none;
+export const PrimaryButton = styled.button`
+  cursor: pointer;
   border: 0;
   font-weight: 900;
   transition: all 150ms ease-in-out;
@@ -122,7 +122,6 @@ const commonButtonStyles = () => css`
   font-size: 2.2rem;
   border-radius: 4rem;
   &:hover {
-    cursor: pointer;
     transform: translateY(-3px) scale(1.045);
   }
   &:active {
@@ -138,10 +137,6 @@ const commonButtonStyles = () => css`
   svg {
     width: 3rem;
   }
-`;
-
-export const PrimaryButton = styled.button`
-  ${commonButtonStyles};
   background: rgb(226, 195, 103);
   background: linear-gradient(
     180deg,
@@ -153,6 +148,13 @@ export const PrimaryButton = styled.button`
   &:focus {
     outline: 6px solid rgba(96, 34, 11, 0.6);
   }
+  ${({ clickAllowed }) =>
+    `${
+      !clickAllowed &&
+      css`
+        pointer-events: none;
+      `
+    }`};
 `;
 
 export const SeatMessage = styled.h4`

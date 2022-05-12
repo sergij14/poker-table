@@ -41,10 +41,7 @@ export default function PlayerSeat({ seatNum }) {
         num={seatNum}
         ref={seatAreaRef}
       >
-        <Chips
-          num={seatNum}
-          onClick={() => handleSeatSelect(seatNum)}
-        >
+        <Chips num={seatNum} onClick={() => handleSeatSelect(seatNum)}>
           {chipsArr.map((_, i) => (
             <Chip
               key={i}
@@ -54,7 +51,7 @@ export default function PlayerSeat({ seatNum }) {
               animate="visible"
               transition={{ type: "spring", damping: 20, duration: 0.7 }}
             >
-              <ChipAmount>{i}</ChipAmount>
+              <ChipAmount>{i + 1}</ChipAmount>
               <img src="/img/black-3d.svg" alt="" />
             </Chip>
           ))}
