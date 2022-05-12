@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PlayerSeat from "./PlayerSeat";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
 import {
@@ -20,10 +20,6 @@ export default function PokerTable() {
     _seats,
     clickAllowed,
   } = useTable();
-
-  useEffect(() => {
-    console.log(clickAllowed);
-  }, [clickAllowed]);
 
   return (
     <Container>
