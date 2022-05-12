@@ -19,11 +19,11 @@ export default function PlayerSeat({ seatNum }) {
       hidden: {
         opacity: 0,
         y: 50,
-        x: seatAreaBounds.width / 5,
+        x: 0,
       },
       visible: {
         y: seatNum === 0 || seatNum === 3 ? 125 : 85,
-        x: seatAreaBounds.width / 5,
+        x: seatAreaBounds.width / 8,
         opacity: 1,
       },
     }),

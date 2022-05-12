@@ -26,7 +26,7 @@ export const PlayerSeats = styled.div`
   top: 55%;
   left: 50%;
   display: flex;
-  gap: 10.5rem;
+  gap: 8.5rem;
 `;
 
 export const PlayerSeatContainer = styled.div``;
@@ -38,13 +38,13 @@ export const SeatArea = styled.div`
   ${paddingForSeat};
   width: 10.5rem;
   height: 10.5rem;
+  position: relative;
   background-color: rgba(0, 0, 0, 0.7);
-  border-image-width: 0px 0px 6px 0px;
   border: ${({ selected }) =>
       `${
         selected
-          ? "8px rgba(102, 153, 153, 0.8)"
-          : "2px rgba(102, 153, 153, 0.5)"
+          ? "8px rgba(192, 183, 153, 0.8)"
+          : "8px rgba(102, 153, 153, 0.5)"
       }`}
     solid;
   border-radius: 50%;
@@ -55,7 +55,7 @@ export const SeatArea = styled.div`
       `${
         !selected &&
         `
-        border: 4px rgba(102, 153, 153, 0.8) solid;
+        border: 8px rgba(102, 153, 153, 0.8) solid;
     `
       }`}
   }
