@@ -130,6 +130,7 @@ const commonButtonStyles = () => css`
   }
   &:disabled {
     opacity: 0.7;
+    pointer-events: none;
   }
   display: flex;
   gap: 0.8rem;

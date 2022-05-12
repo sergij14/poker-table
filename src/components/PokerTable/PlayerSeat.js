@@ -12,7 +12,7 @@ import {
 
 export default function PlayerSeat({ seatNum }) {
   const [seatAreaRef, seatAreaBounds] = useMeasure();
-  const { getSeatArr, activeSeat, setActiveSeat } = useTable();
+  const { getSeatArr, activeSeat, handleSeatSelect } = useTable();
 
   const chipVariant = useMemo(
     () => ({
@@ -30,20 +30,21 @@ export default function PlayerSeat({ seatNum }) {
     [seatAreaBounds.width, seatNum]
   );
 
-  const chipsArr = useMemo(() => getSeatArr(seatNum), [ getSeatArr, seatNum ]);
+  const chipsArr = useMemo(() => getSeatArr(seatNum), [getSeatArr, seatNum]);
   const selected = useMemo(() => activeSeat === seatNum, [activeSeat, seatNum]);
 
   return (
     <PlayerSeatContainer num={seatNum}>
       <SeatArea
-        onClick={() =>
-          selected ? setActiveSeat(null) : setActiveSeat(seatNum)
-        }
+        onClick={() => handleSeatSelect(seatNum)}
         selected={selected}
         num={seatNum}
         ref={seatAreaRef}
       >
-        <Chips num={seatNum} onClick={() => setActiveSeat(seatNum)}>
+        <Chips
+          num={seatNum}
+          onClick={() => handleSeatSelect(seatNum)}
+        >
           {chipsArr.map((_, i) => (
             <Chip
               key={i}
