@@ -11,27 +11,23 @@ const ErrorMessage = () => {
 
   useEffect(() => {
     const lifeTime = setTimeout(() => {
-      setError(undefined);
+      error && setError(undefined);
     }, 7000);
 
     return () => {
       clearTimeout(lifeTime);
     };
-  }, [setError]);
+  }, [setError, error]);
 
   return (
-    <>
-      {error && (
-        <ErrorContainer
-          transition={{ repeat: Infinity, duration: 0.5 }}
-          initial="hidden"
-          animate="visible"
-          variants={variants}
-        >
-          {error}
-        </ErrorContainer>
-      )}
-    </>
+    <ErrorContainer
+      transition={{ repeat: Infinity, duration: 0.5 }}
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+    >
+      {error}
+    </ErrorContainer>
   );
 };
 

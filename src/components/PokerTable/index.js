@@ -20,6 +20,7 @@ export default function PokerTable() {
     getSeatArr,
     _seats,
     clickAllowed,
+    error,
   } = useTable();
 
   return (
@@ -39,7 +40,7 @@ export default function PokerTable() {
             <MinusCircleIcon />
             remove
           </PrimaryButton>
-          <ErrorMessage />
+          {error && <ErrorMessage />}
         </ButtonsGroup>
       </Buttons>
 
