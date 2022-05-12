@@ -19,7 +19,6 @@ export default function PokerTable() {
     activeSeat,
     getSeatArr,
     _seats,
-    clickAllowed,
     error,
   } = useTable();
 
@@ -28,12 +27,11 @@ export default function PokerTable() {
       <Background src="img/bg.jpg" />
       <Buttons>
         <ButtonsGroup>
-          <PrimaryButton clickAllowed={clickAllowed} onClick={handleAddChip}>
+          <PrimaryButton onClick={handleAddChip}>
             <PlusCircleIcon />
             add
           </PrimaryButton>
           <PrimaryButton
-            clickAllowed={clickAllowed}
             disabled={activeSeat === null || !getSeatArr(activeSeat).length}
             onClick={handleRemoveChip}
           >

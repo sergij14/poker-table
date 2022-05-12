@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import useSound from "../hooks/useSound";
+import useSound from "use-sound";
 import addChip from "../assets/sound/add-chip.mp3";
 import removeChip from "../assets/sound/remove-chip.mp3";
 import warning from "../assets/sound/warning.mp3";
@@ -26,25 +26,22 @@ function TableContextProvider({ children }) {
   // App error
   const [error, setError] = useState();
 
-  // Sound refs
-  const addChipSound = useSound(addChip);
-  const removeChipSound = useSound(removeChip);
-  const warningSound = useSound(warning);
-  const selectSeatSound = useSound(click);
+  //Sounds
+  const [playAddChip] = useSound(addChip);
+  const [playRemoveChip] = useSound(removeChip);
+  const [playWarning] = useSound(warning);
+  const [playSelectSeat] = useSound(click);
 
   // Getting seats
   const getSeatArr = useCallback((num) => seats[num].chips, [seats]);
   const _seats = [1, 2, 3, 4];
-
-  // Click allowed
-  const [clickAllowed, setClickAllowed] = useState(true);
 
   // Selecting a seat
   const handleSeatSelect = (seatNum) => {
     if (seatNum === activeSeat) {
       setActiveSeat(null);
     } else {
-      selectSeatSound.play();
+      playSelectSeat()
       setActiveSeat(seatNum);
     }
   };
@@ -58,13 +55,13 @@ function TableContextProvider({ children }) {
   // Chip methods
   const handleAddChip = () => {
     if (activeSeat === null) {
-      warningSound.play();
+      playWarning();
       return setError("Please select a seat");
     } else {
       setError(undefined);
     }
     if (getSeatArr(activeSeat).length >= 10) {
-      warningSound.play();
+      playWarning();
       return setError("Chip limit exceeded");
     } else {
       setError(undefined);
@@ -78,8 +75,8 @@ function TableContextProvider({ children }) {
         },
       };
     });
-    setClickAllowed(false);
-    addChipSound.play(() => setClickAllowed(true));
+
+    playAddChip();
   };
 
   const handleRemoveChip = () => {
@@ -95,8 +92,8 @@ function TableContextProvider({ children }) {
         },
       };
     });
-    setClickAllowed(false);
-    removeChipSound.play(() => setClickAllowed(true));
+    playRemoveChip()
+
   };
 
   // Context obj
@@ -109,7 +106,6 @@ function TableContextProvider({ children }) {
     handleSeatSelect,
     error,
     setError,
-    clickAllowed,
     seats,
     _seats,
   };

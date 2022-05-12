@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
@@ -177,13 +177,6 @@ export const PrimaryButton = styled.button`
   &:focus {
     border: 6px solid rgba(96, 34, 11, 0.6);
   }
-  ${({ clickAllowed }) =>
-    `${
-      !clickAllowed &&
-      css`
-        pointer-events: none;
-      `
-    }`};
 `;
 
 export const SeatMessage = styled.h4`
