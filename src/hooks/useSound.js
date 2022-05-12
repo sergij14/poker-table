@@ -6,6 +6,7 @@ const useSound = (audioFile) => {
   useEffect(() => {
     if (soundRef) {
       soundRef.current = new Audio(audioFile);
+      soundRef.current.preload = "auto";
     }
   }, [soundRef, audioFile]);
 

@@ -36,10 +36,11 @@ const paddingForSeat = ({ num }) =>
 
 export const SeatArea = styled.div`
   ${paddingForSeat};
-  width: 9.5rem;
-  height: 9.5rem;
+  width: 10.5rem;
+  height: 10.5rem;
   background-color: rgba(0, 0, 0, 0.7);
-  outline: ${({ selected }) =>
+  border-image-width: 0px 0px 6px 0px;
+  border: ${({ selected }) =>
       `${
         selected
           ? "8px rgba(102, 153, 153, 0.8)"
@@ -54,7 +55,7 @@ export const SeatArea = styled.div`
       `${
         !selected &&
         `
-        outline: 4px rgba(102, 153, 153, 0.8) solid;
+        border: 4px rgba(102, 153, 153, 0.8) solid;
     `
       }`}
   }
@@ -174,7 +175,7 @@ export const PrimaryButton = styled.button`
   color: #3e2d0b;
   text-shadow: 2px 1px #c5a86a;
   &:focus {
-    outline: 6px solid rgba(96, 34, 11, 0.6);
+    border: 6px solid rgba(96, 34, 11, 0.6);
   }
   ${({ clickAllowed }) =>
     `${
