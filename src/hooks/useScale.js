@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 const useScale = (innerWidth, innerHeight) => {
   const [scale, setScale] = useState("");
@@ -19,7 +19,7 @@ const useScale = (innerWidth, innerHeight) => {
     setScale(`${personalPromoScale} , ${personalPromoScale}`);
   }, [innerWidth, innerHeight]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener("resize", handleResize, true);
     window.addEventListener("load", handleResize, true);
     return () => {
