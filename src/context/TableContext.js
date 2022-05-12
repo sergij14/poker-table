@@ -5,33 +5,7 @@ import addChip from "../assets/sound/add-chip.mp3";
 import removeChip from "../assets/sound/remove-chip.mp3";
 import warning from "../assets/sound/warning.mp3";
 import click from "../assets/sound/click.mp3";
-
-const initialSeats = {
-  0: {
-    chips: [],
-  },
-  1: {
-    chips: [],
-  },
-  2: {
-    chips: [],
-  },
-  3: {
-    chips: [],
-  },
-};
-
-const defaultContext = {
-  getSeatArr: undefined,
-  activeSeat: undefined,
-  setActiveSeat: undefined,
-  isSeatSelected: undefined,
-  handleRemoveChip: undefined,
-  handleAddChip: undefined,
-  handleSeatSelect: undefined,
-  seats: undefined,
-  _seats: undefined,
-};
+import { defaultContext, initialSeats } from "./defaults";
 
 const TableContext = createContext(defaultContext);
 

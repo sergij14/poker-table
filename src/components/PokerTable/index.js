@@ -9,7 +9,7 @@ import {
   PrimaryButton,
   Background,
 } from "./styles";
-import { useTable } from "../../contexts/TableContext";
+import { useTable } from "../../context/TableContext";
 
 export default function PokerTable() {
   const {

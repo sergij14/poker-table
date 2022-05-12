@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import { useWindowSize } from "rooks";
 import styled from "styled-components";
 import PokerTable from "./components/PokerTable";
-import TableContextProvider from "./contexts/TableContext";
+import TableContextProvider from "./context/TableContext";
 import useScale from "./hooks/useScale";
 
 function App() {

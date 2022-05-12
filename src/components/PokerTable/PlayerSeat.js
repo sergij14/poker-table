@@ -1,7 +1,7 @@
 import React from "react";
 import { useMemo } from "react";
 import useMeasure from "react-use-measure";
-import { useTable } from "../../contexts/TableContext";
+import { useTable } from "../../context/TableContext";
 import {
   Chip,
   ChipAmount,
