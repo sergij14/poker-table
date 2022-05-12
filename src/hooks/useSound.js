@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 const useSound = (audioFile) => {
   const soundRef = useRef();
@@ -9,8 +9,15 @@ const useSound = (audioFile) => {
     }
   }, [soundRef, audioFile]);
 
+  const play = useCallback(() => {
+    if (soundRef?.current) {
+      soundRef.current.play();
+    }
+  }, [soundRef]);
+
   return {
     soundRef,
+    play,
   };
 };
 

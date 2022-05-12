@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import useSound from "../hooks/useSound";
-import addChipSound from "../assets/sound/add-chip.mp3";
-import removeChipSound from "../assets/sound/remove-chip.mp3";
+import addChip from "../assets/sound/add-chip.mp3";
+import removeChip from "../assets/sound/remove-chip.mp3";
+import warning from "../assets/sound/warning.mp3";
 
 const initialSeats = {
   0: {
@@ -39,24 +40,20 @@ export const useTable = () => {
 function TableContextProvider({ children }) {
   const [activeSeat, setActiveSeat] = useState(null);
   const [seats, setSeats] = useState(initialSeats);
-  const add = useSound(addChipSound);
-  const remove = useSound(removeChipSound);
+  const addChipSound = useSound(addChip);
+  const removeChipSound = useSound(removeChip);
+  const warningSound = useSound(warning);
 
   const getSeatArr = (num) => seats[num].chips;
   const _seats = [1, 2, 3, 4];
 
-  const playChipSound = (ref) => {
-    if (ref?.current) {
-      ref.current.play();
-    }
-  };
-
-
   const handleAddChip = () => {
     if (activeSeat === null) {
+      warningSound.play();
       return toast.warn("Please select a seat");
     }
     if (getSeatArr(activeSeat).length > 30) {
+      warningSound.play();
       return toast.warn("Chip limit exceeded");
     }
     setSeats((prev) => {
@@ -66,9 +63,9 @@ function TableContextProvider({ children }) {
           ...prev[activeSeat],
           chips: [...prev[activeSeat].chips, `${Math.random()}`],
         },
-      }
+      };
     });
-    playChipSound(add.soundRef);
+    addChipSound.play();
   };
 
   const handleRemoveChip = () => {
@@ -84,7 +81,7 @@ function TableContextProvider({ children }) {
         },
       };
     });
-    playChipSound(remove.soundRef);
+    removeChipSound.play();
   };
 
   const contextProps = {

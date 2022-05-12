@@ -123,10 +123,10 @@ const commonButtonStyles = () => css`
   border-radius: 4rem;
   &:hover {
     cursor: pointer;
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.045);
   }
   &:active {
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(1.025);
   }
   &:disabled {
     opacity: 0.7;
