@@ -52,11 +52,8 @@ function TableContextProvider({ children }) {
   useEffect(() => {
     if (activeSeat != null) {
       setError(undefined);
-      if (getSeatArr(activeSeat).length <= 10) {
-        setError(undefined);
-      }
     }
-  }, [activeSeat, getSeatArr]);
+  }, [activeSeat]);
 
   // Chip methods
   const handleAddChip = () => {
@@ -111,6 +108,7 @@ function TableContextProvider({ children }) {
     handleAddChip,
     handleSeatSelect,
     error,
+    setError,
     clickAllowed,
     seats,
     _seats,

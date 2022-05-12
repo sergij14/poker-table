@@ -23,6 +23,7 @@ export const defaultContext = {
   handleSeatSelect: undefined,
   clickAllowed: undefined,
   error: undefined,
+  setError: undefined,
   seats: undefined,
   _seats: undefined,
 };
