@@ -1,5 +1,4 @@
 import React from "react";
-import { ToastContainer } from "react-toastify";
 import { useWindowSize } from "rooks";
 import styled from "styled-components";
 import PokerTable from "./components/PokerTable";
@@ -16,7 +15,6 @@ function App() {
         <AppContainer scale={scale}>
           <PokerTable />
         </AppContainer>
-        <ToastContainer />
       </TableContextProvider>
     </>
   );

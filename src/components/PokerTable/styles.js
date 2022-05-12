@@ -110,6 +110,34 @@ export const ButtonsGroup = styled.div`
   display: flex;
   gap: 2rem;
   justify-content: center;
+  position: relative;
+`;
+
+export const ErrorContainer = styled(motion.div)`
+  position: absolute;
+  left: 50%;
+  bottom: -8rem;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem 2rem;
+  color: rgba(255, 153, 153, 0.7);
+  border-radius: 4rem;
+  font-size: 1.8rem;
+  max-width: 100%;
+  min-width: fit-content;
+  &:after {
+    content: "";
+    width: 0;
+    height: 0;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    border-bottom: 12px solid rgba(0, 0, 0, 0.5);
+    border-right: 12px solid transparent; /* 40px height (20+20) */
+    border-left: 12px solid transparent;
+    position: absolute;
+  }
 `;
 
 export const PrimaryButton = styled.button`

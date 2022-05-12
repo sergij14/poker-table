@@ -22,6 +22,7 @@ export const defaultContext = {
   handleAddChip: undefined,
   handleSeatSelect: undefined,
   clickAllowed: undefined,
+  error: undefined,
   seats: undefined,
   _seats: undefined,
 };

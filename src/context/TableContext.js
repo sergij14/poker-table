@@ -1,5 +1,10 @@
-import { createContext, useContext, useState } from "react";
-import { toast } from "react-toastify";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import useSound from "../hooks/useSound";
 import addChip from "../assets/sound/add-chip.mp3";
 import removeChip from "../assets/sound/remove-chip.mp3";
@@ -18,6 +23,9 @@ function TableContextProvider({ children }) {
   const [activeSeat, setActiveSeat] = useState(null);
   const [seats, setSeats] = useState(initialSeats);
 
+  // App error
+  const [error, setError] = useState();
+
   // Sound refs
   const addChipSound = useSound(addChip);
   const removeChipSound = useSound(removeChip);
@@ -25,7 +33,7 @@ function TableContextProvider({ children }) {
   const selectSeatSound = useSound(click);
 
   // Getting seats
-  const getSeatArr = (num) => seats[num].chips;
+  const getSeatArr = useCallback((num) => seats[num].chips, [seats]);
   const _seats = [1, 2, 3, 4];
 
   // Click allowed
@@ -41,15 +49,28 @@ function TableContextProvider({ children }) {
     }
   };
 
+  useEffect(() => {
+    if (activeSeat != null) {
+      setError(undefined);
+      if (getSeatArr(activeSeat).length <= 10) {
+        setError(undefined);
+      }
+    }
+  }, [activeSeat, getSeatArr]);
+
   // Chip methods
   const handleAddChip = () => {
     if (activeSeat === null) {
       warningSound.play();
-      return toast.warn("Please select a seat");
+      return setError("Please select a seat");
+    } else {
+      setError(undefined);
     }
-    if (getSeatArr(activeSeat).length > 30) {
+    if (getSeatArr(activeSeat).length >= 10) {
       warningSound.play();
-      return toast.warn("Chip limit exceeded");
+      return setError("Chip limit exceeded");
+    } else {
+      setError(undefined);
     }
     setSeats((prev) => {
       return {
@@ -89,6 +110,7 @@ function TableContextProvider({ children }) {
     handleRemoveChip,
     handleAddChip,
     handleSeatSelect,
+    error,
     clickAllowed,
     seats,
     _seats,

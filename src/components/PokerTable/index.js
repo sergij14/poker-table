@@ -10,6 +10,7 @@ import {
   Background,
 } from "./styles";
 import { useTable } from "../../context/TableContext";
+import ErrorMessage from "./ErrorMessage";
 
 export default function PokerTable() {
   const {
@@ -38,6 +39,7 @@ export default function PokerTable() {
             <MinusCircleIcon />
             remove
           </PrimaryButton>
+          <ErrorMessage />
         </ButtonsGroup>
       </Buttons>
 
