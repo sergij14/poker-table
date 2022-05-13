@@ -3,13 +3,14 @@ import { useTable } from "../../context/TableContext";
 import { ErrorContainer } from "./styles";
 
 const ErrorMessage = () => {
-  const { error, setError } = useTable();
+  const { error, setError, playWarning } = useTable();
   const variants = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
   };
 
   useEffect(() => {
+    playWarning();
     const lifeTime = setTimeout(() => {
       error && setError(undefined);
     }, 7000);
@@ -17,7 +18,7 @@ const ErrorMessage = () => {
     return () => {
       clearTimeout(lifeTime);
     };
-  }, [setError, error]);
+  }, [setError, playWarning, error]);
 
   return (
     <ErrorContainer

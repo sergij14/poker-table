@@ -27,5 +27,6 @@ export const defaultContext = {
   _seats: undefined,
   volume: undefined,
   volumeDown: undefined,
-  volumeUp: undefined
+  volumeUp: undefined,
+  playWarning: undefined
 };

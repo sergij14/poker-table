@@ -67,13 +67,11 @@ function TableContextProvider({ children }) {
   // Chip methods
   const handleAddChip = () => {
     if (activeSeat === null) {
-      playWarning();
       return setError("Please select a seat");
     } else {
       setError(undefined);
     }
     if (getSeatArr(activeSeat).length >= 10) {
-      playWarning();
       return setError("Chip limit exceeded");
     } else {
       setError(undefined);
@@ -122,6 +120,7 @@ function TableContextProvider({ children }) {
     volume,
     volumeDown,
     volumeUp,
+    playWarning
   };
 
   return (
