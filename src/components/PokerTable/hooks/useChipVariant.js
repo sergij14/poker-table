@@ -9,8 +9,8 @@ export function useChipVariants(bounds, seatNum) {
         x: 0,
       },
       visible: {
-        y: seatNum === 0 || seatNum === 3 ? 125 : 85,
-        x: bounds.width / 8,
+        y: seatNum === 0 || seatNum === 3 ? 135 : 95,
+        x: bounds.width / 5,
         opacity: 1,
       },
     }),

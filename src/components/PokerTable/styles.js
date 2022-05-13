@@ -39,13 +39,12 @@ export const SeatArea = styled.div`
   height: 10.5rem;
   position: relative;
   background-color: rgba(0, 0, 0, 0.7);
-  border: ${({ selected }) =>
+  ${({ selected }) =>
       `${
         selected
-          ? "8px rgba(192, 183, 153, 0.8)"
-          : "8px rgba(102, 153, 153, 0.5)"
-      }`}
-    solid;
+          ? "box-shadow: 0 0 0 8px rgba(192, 183, 153, 0.8)"
+          : "box-shadow: 0 0 0 8px rgba(102, 153, 153, 0.5)"
+      }`};
   border-radius: 50%;
   transition: all 150ms ease-in-out;
   &:hover {
@@ -54,7 +53,7 @@ export const SeatArea = styled.div`
       `${
         !selected &&
         `
-        border: 8px rgba(102, 153, 153, 0.8) solid;
+        box-shadow: 0 0 0 8px rgba(102, 153, 153, 0.8);
     `
       }`}
   }
@@ -110,6 +109,7 @@ export const ButtonsGroup = styled.div`
   display: flex;
   gap: 2rem;
   justify-content: center;
+  align-items: flex-start;
   position: relative;
 `;
 
@@ -172,7 +172,7 @@ export const PrimaryButton = styled.button`
   color: #3e2d0b;
   text-shadow: 2px 1px #c5a86a;
   &:focus {
-    border: 6px solid rgba(96, 34, 11, 0.6);
+    box-shadow: 0 0 0 6px rgba(96, 34, 11, 0.6);
   }
 `;
 
@@ -251,6 +251,6 @@ export const VolumeBtn = styled.button`
   color: rgb(108, 122, 137);
   text-shadow: 2px 1px #fff;
   &:focus {
-    border: none;
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.9);
   }
 `;
