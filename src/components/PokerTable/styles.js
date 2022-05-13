@@ -40,21 +40,22 @@ export const SeatArea = styled.div`
   position: relative;
   background-color: rgba(0, 0, 0, 0.7);
   ${({ selected }) =>
-      `${
-        selected
-          ? "box-shadow: 0 0 0 8px rgba(192, 183, 153, 0.8)"
-          : "box-shadow: 0 0 0 8px rgba(102, 153, 153, 0.5)"
-      }`};
+    `${
+      selected
+        ? "box-shadow: 0 0 0 8px rgba(192, 183, 153, 0.8)"
+        : "box-shadow: 0 0 0 8px rgba(102, 153, 153, 0.5)"
+    }`};
   border-radius: 50%;
   transition: all 150ms ease-in-out;
   &:hover {
     cursor: pointer;
     ${({ selected }) =>
       `${
-        !selected &&
-        `
-        box-shadow: 0 0 0 8px rgba(102, 153, 153, 0.8);
-    `
+        selected
+          ? `
+            box-shadow: 0 0 0 8px rgba(192, 183, 153, 0.5)`
+          : `
+          box-shadow: 0 0 0 8px rgba(102, 153, 153, 0.8)`
       }`}
   }
 `;

@@ -7,7 +7,10 @@ import { Chip, ChipAmount, Chips, SeatArea } from "./styles";
 
 export default function PlayerSeat({ seatNum }) {
   const [seatAreaRef, seatAreaBounds] = useMeasure();
-  const { getSeatArr, activeSeat, handleSeatSelect } = useTable();
+  const {
+    gameSeats: { getSeatArr, activeSeat },
+    seatMethods: { handleSeatSelect },
+  } = useTable();
   const { chipVariant } = useChipVariants(seatAreaBounds, seatNum);
 
   const chipsArr = useMemo(() => getSeatArr(seatNum), [getSeatArr, seatNum]);

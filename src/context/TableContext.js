@@ -107,20 +107,28 @@ function TableContextProvider({ children }) {
 
   // Context obj
   const contextProps = {
-    getSeatArr,
-    activeSeat,
-    setActiveSeat,
-    handleRemoveChip,
-    handleAddChip,
-    handleSeatSelect,
-    error,
-    setError,
-    seats,
-    _seats,
-    volume,
-    volumeDown,
-    volumeUp,
-    playWarning
+    gameSeats: {
+      getSeatArr,
+      activeSeat,
+      setActiveSeat,
+      seats,
+      _seats,
+    },
+    seatMethods: {
+      handleRemoveChip,
+      handleAddChip,
+      handleSeatSelect,
+    },
+    errors: {
+      error,
+      setError,
+      playWarning,
+    },
+    sound: {
+      volume,
+      volumeDown,
+      volumeUp,
+    },
   };
 
   return (

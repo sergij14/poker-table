@@ -17,12 +17,9 @@ import VolumeLevel from "./VolumeLevel";
 
 export default function PokerTable() {
   const {
-    handleAddChip,
-    handleRemoveChip,
-    activeSeat,
-    getSeatArr,
-    _seats,
-    error,
+    seatMethods: { handleAddChip, handleRemoveChip },
+    gameSeats: { activeSeat, getSeatArr, _seats },
+    errors: { error },
   } = useTable();
 
   const removeDisabled = useMemo(

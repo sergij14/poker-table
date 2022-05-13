@@ -4,7 +4,9 @@ import { useTable } from "../../context/TableContext";
 import { Volume, VolumeBtn, VolumeLevelContainer } from "./styles";
 
 const VolumeLevel = () => {
-  const { volume, volumeUp, volumeDown } = useTable();
+  const {
+    sound: { volume, volumeUp, volumeDown },
+  } = useTable();
   const volumeIsOff = useMemo(
     () => volume.toFixed(1).toString() === "0.0",
     [volume]

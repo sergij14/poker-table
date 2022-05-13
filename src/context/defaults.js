@@ -14,19 +14,27 @@ export const initialSeats = {
 };
 
 export const defaultContext = {
-  getSeatArr: undefined,
-  activeSeat: undefined,
-  setActiveSeat: undefined,
-  isSeatSelected: undefined,
-  handleRemoveChip: undefined,
-  handleAddChip: undefined,
-  handleSeatSelect: undefined,
-  error: undefined,
-  setError: undefined,
-  seats: undefined,
-  _seats: undefined,
-  volume: undefined,
-  volumeDown: undefined,
-  volumeUp: undefined,
-  playWarning: undefined
+  gameSeats: {
+    getSeatArr: undefined,
+    activeSeat: undefined,
+    setActiveSeat: undefined,
+    isSeatSelected: undefined,
+    seats: undefined,
+    _seats: undefined,
+  },
+  seatMethods: {
+    handleRemoveChip: undefined,
+    handleAddChip: undefined,
+    handleSeatSelect: undefined,
+  },
+  errors: {
+    error: undefined,
+    setError: undefined,
+    playWarning: undefined,
+  },
+  sound: {
+    volume: undefined,
+    volumeDown: undefined,
+    volumeUp: undefined,
+  },
 };
