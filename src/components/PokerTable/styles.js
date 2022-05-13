@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { css } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
@@ -28,8 +29,6 @@ export const PlayerSeats = styled.div`
   display: flex;
   gap: 8.5rem;
 `;
-
-export const PlayerSeatContainer = styled.div``;
 
 const paddingForSeat = ({ num }) =>
   `${(num === 0 || num === 3) && "transform: translateY(-40px)"}`;
@@ -62,8 +61,8 @@ export const SeatArea = styled.div`
 `;
 
 export const Chips = styled.div`
-  display: flex;
   ${paddingForSeat};
+  display: flex;
   flex-direction: column-reverse;
   cursor: pointer;
   transition: all 150ms ease-in-out;
@@ -135,21 +134,13 @@ export const ErrorContainer = styled(motion.div)`
   }
 `;
 
-export const PrimaryButton = styled.button`
+const commonButtonStyles = () => css`
   cursor: pointer;
   border: 0;
   font-weight: 900;
   transition: all 150ms ease-in-out;
   text-transform: uppercase;
-  padding: 1.8rem 2.3rem;
-  font-size: 2.2rem;
   border-radius: 4rem;
-  &:hover {
-    transform: translateY(-3px) scale(1.045);
-  }
-  &:active {
-    transform: translateY(-1px) scale(1.025);
-  }
   &:disabled {
     opacity: 0.7;
     pointer-events: none;
@@ -159,6 +150,18 @@ export const PrimaryButton = styled.button`
   align-items: center;
   svg {
     width: 3rem;
+  }
+`;
+
+export const PrimaryButton = styled.button`
+  ${commonButtonStyles}
+  padding: 1.8rem 2.3rem;
+  font-size: 2.2rem;
+  &:hover {
+    transform: translateY(-3px) scale(1.045);
+  }
+  &:active {
+    transform: translateY(-1px) scale(1.025);
   }
   background: rgb(226, 195, 103);
   background: linear-gradient(
@@ -219,40 +222,25 @@ export const VolumeLevelContainer = styled.div`
 export const Volume = styled.div`
   display: flex;
   align-items: center;
-  color:#fff;
+  color: #fff;
   font-size: 2.2rem;
   gap: 1rem;
   & > svg {
     & path {
-      color:inherit;
+      color: inherit;
     }
     width: 3rem;
   }
 `;
 export const VolumeBtn = styled.button`
-  cursor: pointer;
-  border: 0;
-  font-weight: 900;
-  transition: all 150ms ease-in-out;
-  text-transform: uppercase;
+  ${commonButtonStyles}
   padding: 1rem 1.3rem;
   font-size: 1.8rem;
-  border-radius: 4rem;
   &:hover {
     transform: translateY(-3px);
   }
   &:active {
     transform: translateY(-1px);
-  }
-  &:disabled {
-    opacity: 0.7;
-    pointer-events: none;
-  }
-  display: flex;
-  gap: 0.8rem;
-  align-items: center;
-  svg {
-    width: 3rem;
   }
   background: rgb(236, 236, 236);
   background: linear-gradient(

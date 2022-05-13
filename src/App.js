@@ -7,16 +7,14 @@ import useScale from "./hooks/useScale";
 
 function App() {
   const { innerWidth, innerHeight } = useWindowSize();
-  const { scale } = useScale( innerWidth, innerHeight );
+  const { scale } = useScale(innerWidth, innerHeight);
 
   return (
-    <>
-      <TableContextProvider>
-        <AppContainer scale={scale}>
-          <PokerTable />
-        </AppContainer>
-      </TableContextProvider>
-    </>
+    <TableContextProvider>
+      <AppContainer scale={scale}>
+        <PokerTable />
+      </AppContainer>
+    </TableContextProvider>
   );
 }
 

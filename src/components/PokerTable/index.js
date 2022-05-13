@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import PlayerSeat from "./PlayerSeat";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
 import {
@@ -25,6 +25,11 @@ export default function PokerTable() {
     error,
   } = useTable();
 
+  const removeDisabled = useMemo(
+    () => activeSeat === null || !getSeatArr(activeSeat).length,
+    [activeSeat, getSeatArr]
+  );
+
   return (
     <Container>
       <Background src="img/bg.jpg" />
@@ -34,10 +39,7 @@ export default function PokerTable() {
             <PlusCircleIcon />
             add
           </PrimaryButton>
-          <PrimaryButton
-            disabled={activeSeat === null || !getSeatArr(activeSeat).length}
-            onClick={handleRemoveChip}
-          >
+          <PrimaryButton disabled={removeDisabled} onClick={handleRemoveChip}>
             <MinusCircleIcon />
             remove
           </PrimaryButton>
