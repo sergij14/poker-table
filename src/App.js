@@ -24,7 +24,6 @@ export const AppContainer = styled.div`
   transform: ${({ scale }) => `scale(${scale})`};
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   justify-content: center;
   background-color: #000;
 `;

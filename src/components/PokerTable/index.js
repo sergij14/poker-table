@@ -14,6 +14,7 @@ import {
 import { useTable } from "../../context/TableContext";
 import ErrorMessage from "./ErrorMessage";
 import VolumeLevel from "./VolumeLevel";
+import { useWindowSize } from "rooks";
 
 export default function PokerTable() {
   const {
@@ -21,6 +22,7 @@ export default function PokerTable() {
     gameSeats: { activeSeat, getSeatArr, _seats },
     errors: { error },
   } = useTable();
+  const { innerHeight } = useWindowSize();
 
   const removeDisabled = useMemo(
     () => activeSeat === null || !getSeatArr(activeSeat).length,
@@ -28,7 +30,7 @@ export default function PokerTable() {
   );
 
   return (
-    <Container>
+    <Container innerHeight={innerHeight}>
       <Background src="img/bg.jpg" />
       <Buttons>
         <ButtonsGroup>

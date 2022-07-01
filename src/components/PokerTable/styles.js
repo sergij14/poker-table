@@ -5,7 +5,7 @@ import { css } from "styled-components";
 export const Container = styled.div`
   position: relative;
   background-color: #000;
-  height: 100vh;
+  height: ${({ innerHeight }) => innerHeight}px;
   width: 142rem;
 `;
 
