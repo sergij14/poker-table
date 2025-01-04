@@ -1,3 +1,5 @@
 # Poker Table
+Poker table application created with React, Framer-Motion & styled-components.
 
-Poker table animations created with React, Framer-Motion.
+To launch the app on your local machine you should run
+`npm install && npm start`
